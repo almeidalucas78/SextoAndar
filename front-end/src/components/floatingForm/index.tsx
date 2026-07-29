@@ -6,19 +6,19 @@ type tabOptions = 'comprar' | 'alugar' | 'lancamentos';
 
 function FloatingForm() {
   //Estado para guardar a aba anual, iniciando em 'comprar'
-  const [activeTab, setActiveTab] = useState<tabOptions>('comprar');
+  const [activeTab, setActiveTab] = useState<tabOptions>('comprar');  // Conteudo dentro de "<>" se chama Generic no TS
 
   return (
     <div className="tab-list-container">
       <ul>
         <li
-          className={activeTab === 'comprar' ? 'active' : ''}
-          onClick={() => setActiveTab('comprar')}
+          className={activeTab === 'comprar' ? 'active' : ''} //Valor for igual a comprar a logica adiciona o active
+          onClick={() => setActiveTab('comprar')} // ao clicar ele seta no useState para o valor
         >
           Comprar
         </li>
         <li
-          className={activeTab === 'alugar' ? 'active' : ''}
+          className={activeTab === 'alugar' ? 'active' : ''} 
           onClick={() => setActiveTab('alugar')}
         >
           Alugar
