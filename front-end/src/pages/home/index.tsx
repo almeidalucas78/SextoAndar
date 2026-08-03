@@ -5,7 +5,7 @@ import Header from '../../components/header/index';
 function Home() {
   return (
     <>
-      <div className="bg-black-100 min-h-screen">
+      <div className=" min-h-screen">
         <Header />
         <Banner />
       </div>

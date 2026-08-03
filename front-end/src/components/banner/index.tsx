@@ -3,7 +3,7 @@ import FloatingForm from '../floatingForm';
 
 function Banner() {
   return (
-    <div className="container mx-auto px-4 py-20 grid grid-cols-2 gap-8 items-center">
+    <div className="container mx-auto px-4 grid grid-cols-2 gap-8 items-center">
       <div>
         <h1 className="text-3xl font-bold">
           Bem vindo ao <br />
