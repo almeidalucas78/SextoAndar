@@ -60,7 +60,7 @@ function FloatingForm() {
       {activeTab === 'alugar' && (
         <div className="tab-2-list-content grid grid-cols-3 gap-4">
           <div className="tab-2-list-item">
-            <label>Cidade ou Bairro</label>
+            <label>Bairro ou Cidade para alugar</label>
             <input type="text" placeholder="Ex: São Paulo, SP" />
           </div>
           <div className="tab-2-list-item">
