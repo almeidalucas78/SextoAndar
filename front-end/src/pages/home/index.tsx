@@ -1,5 +1,4 @@
 import Banner from '../../components/banner';
-import FloatingForm from '../../components/floatingForm';
 import Header from '../../components/header/index';
 
 function Home() {

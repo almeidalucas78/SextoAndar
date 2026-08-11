@@ -3,8 +3,9 @@ import { describe, it, expect } from 'vitest';
 import FloatingForm from './index';
 import userEvent from '@testing-library/user-event';
 
-const mockAlugar = { texto: 'Santos' };
-const mockComprar = { texto: 'Flamengo' };
+//Exemplos de testes mocados
+// const mockAlugar = { texto: 'Santos' };
+// const mockComprar = { texto: 'Flamengo' };
 
 describe('FloatingForm', () => {
   it('renderiza sem quebrar', () => {
@@ -12,21 +13,17 @@ describe('FloatingForm', () => {
     expect(screen.getByRole('list')).toBeInTheDocument();
   });
   it('testando evento de clique ao clicar em Alugar', async () => {
-    const clickEvent = userEvent.setup();
+    const user = userEvent.setup();
     render(<FloatingForm />);
-    const myButton = screen.getByText('Alugar');
-    await clickEvent.click(myButton);
-    expect(
-      mockAlugar.texto
-    ).toBe("Santos");
+    await user.click(screen.getByText('Alugar'));
+    expect(screen.getByLabelText('Aluguel até')).toBeInTheDocument();
   });
-   it('testando evento de clique ao clicar em Comprar', async () => {
-    const clickEvent = userEvent.setup();
+
+  it('volta para campo de compra ao clicar em comprar após mudar de tab', async () => {
+    const user = userEvent.setup();
     render(<FloatingForm />);
-    const myButton = screen.getByText('Comprar');
-    await clickEvent.click(myButton);
-    expect(
-      mockComprar.texto
-    ).toBe("Flamengo");
+    await user.click(screen.getByText('Alugar'));
+    await user.click(screen.getByText('Comprar'));
+    expect(screen.getByLabelText('Imóvel até')).toBeInTheDocument();
   });
 });

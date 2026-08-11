@@ -52,20 +52,20 @@ function FloatingForm() {
             </select>
           </div>
           <div className="tab-2-list-item">
-          <label>Preço Até</label>
-            <input type="text" placeholder="Ex: R$ 500.000,00" />
+          <label htmlFor='imovel-ate'>Imóvel até</label>
+            <input id='imovel-ate' type="text" placeholder="Ex: R$ 500.000,00" />
           </div>
         </div>
       )}
       {activeTab === 'alugar' && (
         <div className="tab-2-list-content grid grid-cols-3 gap-4">
           <div className="tab-2-list-item">
-            <label>Bairro ou Cidade para alugar</label>
-            <input type="text" placeholder="Ex: São Paulo, SP" />
+            <label htmlFor='bairro-cidade-alugar'>Bairro ou Cidade para alugar</label>
+            <input id='bairro-cidade-alugar' type="text" placeholder="Ex: São Paulo, SP" />
           </div>
           <div className="tab-2-list-item">
-            <label>Tipo de Imóvel</label>
-            <select>
+            <label htmlFor='tipo-imovel-alugar'>Tipo de Imóvel</label>
+            <select id='tipo-imovel-alugar'>
               <option value="">Selecione</option>
               <option value="apartamento">Apartamento</option>
               <option value="casa">Casa</option>
@@ -74,8 +74,8 @@ function FloatingForm() {
             </select>
           </div>
           <div className="tab-2-list-item">
-            <label>Preço Até</label>
-            <input type="text" placeholder="Ex: R$ 500.000,00" />
+            <label htmlFor='aluguel-ate'>Aluguel até</label>
+            <input id='aluguel-ate' type="text" placeholder="Ex: R$ 500.000,00" />
           </div>
         </div>
       )}
