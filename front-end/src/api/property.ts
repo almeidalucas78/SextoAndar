@@ -20,3 +20,10 @@ export interface Property { // tem a função de definir o tipo de dado que ser�
   status: PropertyStatus
   photoUrls?: string
 }
+
+export interface PropertyFiters{ // tem a função de definir o tipo de dado que será enviado para a API
+  city?: string
+  type?: PropertyType
+  minPrice?: number
+  maxPrice?: number
+}

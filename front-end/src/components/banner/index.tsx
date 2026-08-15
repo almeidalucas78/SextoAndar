@@ -15,19 +15,19 @@ function Banner() {
           sonhos.
         </p>
         <a
-          href="/imoveis"
+          href="/search"
           className="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded mt-4 display: inline-block"
         >
           Buscar Imóveis
         </a>
-        <a href="como-funciona" className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mt-4 ml-4 display: inline-block">
+        <a href="/como-funciona" className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mt-4 ml-4 display: inline-block">
           Como Funciona
         </a>
         <FloatingForm />
       </div>
       <div className="text-left">
         <img src={bannerHomeHouse} alt="Banner" className="w-full h-auto" />
-      </div>
+    </div>
     </div>
   );
 }
