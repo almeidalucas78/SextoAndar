@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
-import { getProperties } from '../../api/property.service';
 import type { Property } from '../../api/property';
 import Container from '../../components/container/index';
+import Header from '../../components/header';
+import { getProperties, parseSearchParams } from '../../api/property.service';
+import {
+  PROPERTY_TYPE_LABEL,
+  LISTING_TYPE_LABEL,
+} from '../../api/property.service';
 
 function SearchPage() {
   const [searchParams] = useSearchParams(); //armazena os parâmetros da URL
@@ -12,7 +17,7 @@ function SearchPage() {
 
   useEffect(() => {
     setLoading(true);
-    getProperties({ city: searchParams.get('city') ?? undefined })
+    getProperties(parseSearchParams(searchParams))
       .then(setProperties)
       .catch(() => setError('Erro ao carregar os imóveis'))
       .finally(() => setLoading(false));
@@ -20,12 +25,33 @@ function SearchPage() {
 
   if (loading) return <div>Carregando...</div>;
   if (error) return <div>{error}</div>;
-
+  console.log(properties);
   return (
     <>
-      <div>{properties[0]?.title}</div>
+      <Header />
       <Container>
-        <h1>Teste</h1>
+        <div className="">
+          <ul className="flex flex-wrap items-center gap-2 mt-4">
+            <li className="font-semibold text-gray-800">
+              {properties.length} imóveis em {searchParams.get('city')}
+            </li>
+            {searchParams.get('mode') && (
+              <li className="bg-violet-100 text-violet-700 rounded-full px-3 py-1 text-sm">
+                {searchParams.get('mode') === 'alugar' ? 'Alugar' : 'Comprar'}
+              </li>
+            )}
+            {searchParams.get('propertyType') && (
+              <li className="bg-violet-100 text-violet-700 rounded-full px-3 py-1 text-sm capitalize">
+                {searchParams.get('propertyType')}
+              </li>
+            )}
+            {searchParams.get('maxPrice') && (
+              <li className="bg-violet-100 text-violet-700 rounded-full px-3 py-1 text-sm">
+                até R$ {searchParams.get('maxPrice')}
+              </li>
+            )}
+          </ul>
+        </div>
       </Container>
     </>
   );
