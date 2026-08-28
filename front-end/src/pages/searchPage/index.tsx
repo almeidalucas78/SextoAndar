@@ -4,10 +4,7 @@ import type { Property } from '../../api/property';
 import Container from '../../components/container/index';
 import Header from '../../components/header';
 import { getProperties, parseSearchParams } from '../../api/property.service';
-import {
-  PROPERTY_TYPE_LABEL,
-  LISTING_TYPE_LABEL,
-} from '../../api/property.service';
+import { CardProperty } from '../../components/cardProperty';
 
 function SearchPage() {
   const [searchParams] = useSearchParams(); //armazena os parâmetros da URL
@@ -51,6 +48,21 @@ function SearchPage() {
               </li>
             )}
           </ul>
+        </div>
+        <div className="flex w-full gap-4 mt-10">
+          <div className="w-1/5">Filtro</div>
+          <div className="grid grid-cols-2 gap-6">
+            {properties.map((item) => (
+              <CardProperty key={item.title}
+                condoFee={item.condoFee}
+                listingType={item.listingType}
+                price={item.rentPrice ?? item.salePrice ?? 0}
+                title={item.title}
+                description={item.city}
+                fictures= {[`${item.bedrooms} Quartos`, `${item.bathrooms} Banheiros`, `${item.parkingSpots} Vagas`, `${item.areaM2}m²`]}
+              />
+            ))}
+          </div>
         </div>
       </Container>
     </>

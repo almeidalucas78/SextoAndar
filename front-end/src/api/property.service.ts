@@ -19,17 +19,6 @@ const LISTING_TYPE_MAP: Record<string, ListingType> = {
   alugar: 'RENT',
 };
 
-export const PROPERTY_TYPE_LABEL: Record<PropertyType, string> = {
-  APARTMENT: 'Apartamento',
-  HOUSE: 'Casa',
-  STUDIO: 'Studio',
-};
-
-export const LISTING_TYPE_LABEL: Record<ListingType, string> = {
-  RENT: 'Aluguel',
-  SALE: 'Venda',
-};
-
 //Converte o valor do input de preço para um número, ou undefined caso o valor seja inválido
 function parsePriceInput(value: string | null): number | undefined {
   if (!value) return undefined;
@@ -59,6 +48,9 @@ export async function getProperties(
   const filtered = propertiesMock.filter((property) => {
     if (filters.city && property.city !== filters.city) return false;
     if (filters.type && property.type !== filters.type) return false;
+    if (filters.listingType && property.listingType !== filters.listingType)
+      return false;
+
     const price =
       property.listingType === 'SALE' ? property.salePrice : property.rentPrice;
     if (filters.minPrice && (price === undefined || price < filters.minPrice))
