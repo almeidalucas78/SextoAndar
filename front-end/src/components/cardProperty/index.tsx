@@ -1,4 +1,7 @@
 import type { CardPropertyProps } from '../../types/cardProperty';
+import { MapPin } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 const LISTING_TYPE_STYLES: Record<
   string,
@@ -8,10 +11,19 @@ const LISTING_TYPE_STYLES: Record<
   RENT: { label: 'Aluguel', className: 'bg-green-700 text-white' },
 };
 
+export function Feature({ icon: Icon, children }: { icon: LucideIcon; children: ReactNode }) {
+  return (
+    <span className="flex items-center gap-1 text-sm text-gray-500">
+      <Icon className="w-4 h-4" />
+      {children}
+    </span>
+  );
+}
+
 export function CardProperty({
   listingType,
   title,
-  description,
+  location,
   price,
   fictures,
   condoFee,
@@ -29,10 +41,10 @@ export function CardProperty({
         <span className="text-gray-600 text-sm"> + R${condoFee} cond.</span>
       </div>
       <h2 className='text-sm'>{title}</h2>
-      <p>{description}</p>
+      <p>  <MapPin /> {location}</p>
       <ul className="flex gap-4">
-        {fictures.map((item) => (
-          <li key={item}>{item}</li>
+        {fictures.map((item, index) => (
+          <li key={index}>{item}</li>
         ))}
       </ul>
     </article>

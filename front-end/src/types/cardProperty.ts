@@ -1,8 +1,10 @@
+  import type { ReactNode } from 'react';
+  
   export interface CardPropertyProps{
     listingType: string;
     title: string;
-    description: string;
+    location: string;
     price: number;
     condoFee?: number;
-    fictures: string[];
+    fictures: ReactNode[];
   }
