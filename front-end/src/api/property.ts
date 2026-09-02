@@ -1,5 +1,6 @@
 export type PropertyType = 'APARTMENT' | 'HOUSE' | 'STUDIO';
 export type PropertyStatus = 'AVAILABLE' | 'RENTED' | 'PAUSED';
+export type ListingType = 'RENT' | 'SALE';
 
 export interface Property { // tem a função de definir o tipo de dado que será retornado da API
   id: string
@@ -14,9 +15,19 @@ export interface Property { // tem a função de definir o tipo de dado que ser�
   bathrooms: number
   parkingSpots?: number
   areaM2: number
-  rentPrice: number
-  condoFee: number
-  iptu: number
   status: PropertyStatus
+  listingType: ListingType
+  rentPrice?: number
+  salePrice?: number
+  condoFee?: number
+  iptu?: number
   photoUrls?: string
+}
+
+export interface PropertyFilters{ // tem a função de definir o tipo de dado que será enviado para a API
+  city?: string
+  type?: PropertyType
+  listingType?: ListingType
+  minPrice?: number
+  maxPrice?: number
 }
