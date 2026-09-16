@@ -10,18 +10,37 @@ import { Bath, BedDouble, Car, RulerDimensionLine } from 'lucide-react';
 function SearchPage() {
   const [searchParams] = useSearchParams(); //armazena os parâmetros da URL
   const [properties, setProperties] = useState<Property[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState<'loading' | 'success' | 'error'>(
+    'loading',
+  );
   const [error, setError] = useState<string | null>(null);
+  const [lastQuery, setLastQuery] = useState(searchParams.toString());
+
+  if (searchParams.toString() !== lastQuery) {
+    setLastQuery(searchParams.toString());
+    setStatus('loading');
+    setError(null);
+  }
 
   useEffect(() => {
-    setLoading(true);
+    let cancelled = false;
     getProperties(parseSearchParams(searchParams))
-      .then(setProperties)
-      .catch(() => setError('Erro ao carregar os imóveis'))
-      .finally(() => setLoading(false));
+      .then((data) => {
+        if (cancelled) return;
+        setProperties(data);
+        setStatus('success');
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setError('Erro ao buscar imóveis');
+        setStatus('error');
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [searchParams]);
 
-  if (loading) return <div>Carregando...</div>;
+  if (status === 'loading') return <div>Carregando...</div>;
   if (error) return <div>{error}</div>;
   console.log(properties);
   return (
