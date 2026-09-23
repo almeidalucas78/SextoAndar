@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+front-end/node_modules/.bin/commitlint --edit "$1" --config front-end/commitlint.config.js
