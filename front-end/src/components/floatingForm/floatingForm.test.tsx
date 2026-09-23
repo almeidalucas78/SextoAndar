@@ -11,7 +11,7 @@ describe('FloatingForm', () => {
   it('renderiza sem quebrar', () => {
     render(<FloatingForm />);
     expect(screen.getByRole('list')).toBeInTheDocument();
-  });
+  }); 
   it('testando evento de clique ao clicar em Alugar', async () => {
     const user = userEvent.setup();
     render(<FloatingForm />);

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+cd front-end
+npx lint-staged
