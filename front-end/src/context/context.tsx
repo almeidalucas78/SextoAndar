@@ -1,8 +1,12 @@
+//responsavel por criar o contexto da aplicação, que será usado para compartilhar dados entre os componentes
+
 import { createContext, useContext } from 'react';
 
 export interface AppContextType {
   testValue: string;
   setTestValue: React.Dispatch<React.SetStateAction<string>>;
+  numeros: number;
+  setNumeros: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);

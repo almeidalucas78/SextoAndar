@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '../../test/render';
 import { describe, it, expect } from 'vitest';
 import SearchPage from './index';
 import AppProvider from '../../context/provider';
@@ -10,6 +10,6 @@ describe('SearchPage', () => {
         <SearchPage />
       </AppProvider>
     );
-    expect(screen.getByRole('search')).toBeInTheDocument();
+    expect(screen.getByText(/imóveis em/i)).toBeInTheDocument();
   });
 });

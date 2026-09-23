@@ -1,5 +1,3 @@
-import {react} from 'react';
-
 function Header() {
   return (
     <header className="border-b border-gray-200">
